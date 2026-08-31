@@ -101,41 +101,85 @@
             <div class="admin-field">
               <label> Product Images </label>
 
-              <div class="image-input-row">
-                <input
-                  type="url"
-                  id="productImageUrl"
-                  placeholder="Paste an image URL" />
+              <div class="image-upload-block">
+                <p class="image-block-label">Main Photo</p>
 
-                <button
-                  type="button"
-                  id="addImageUrlButton"
-                  class="admin-secondary-button">
-                  Add URL
-                </button>
+                <div class="image-input-row">
+                  <input
+                    type="url"
+                    id="mainImageUrl"
+                    placeholder="Paste an image URL" />
+
+                  <button
+                    type="button"
+                    id="addMainImageUrlButton"
+                    class="admin-secondary-button">
+                    Add URL
+                  </button>
+                </div>
+
+                <div class="image-input-row">
+                  <label for="mainImageFile" class="file-upload-label">
+                    Upload from device (PNG / JPG)
+                  </label>
+
+                  <input
+                    type="file"
+                    id="mainImageFile"
+                    accept="image/png, image/jpeg"
+                    hidden />
+                </div>
+
+                <p class="field-hint">
+                  This is the cover photo shown in the shop grid.
+                </p>
+
+                <div
+                  id="mainImagePreview"
+                  class="image-preview-main-slot"></div>
               </div>
 
-              <div class="image-input-row">
-                <label for="productImageFiles" class="file-upload-label">
-                  Upload from device (PNG / JPG)
-                </label>
+              <div class="image-upload-block">
+                <p class="image-block-label">Additional Photos</p>
 
-                <input
-                  type="file"
-                  id="productImageFiles"
-                  accept="image/png, image/jpeg"
-                  multiple
-                  hidden />
+                <div class="image-input-row">
+                  <input
+                    type="url"
+                    id="extraImageUrl"
+                    placeholder="Paste an image URL" />
+
+                  <button
+                    type="button"
+                    id="addExtraImageUrlButton"
+                    class="admin-secondary-button">
+                    Add URL
+                  </button>
+                </div>
+
+                <div class="image-input-row">
+                  <label for="extraImageFiles" class="file-upload-label">
+                    Upload from device (PNG / JPG)
+                  </label>
+
+                  <input
+                    type="file"
+                    id="extraImageFiles"
+                    accept="image/png, image/jpeg"
+                    multiple
+                    hidden />
+                </div>
+
+                <p class="field-hint">
+                  Optional. These build the gallery shown when a shopper opens
+                  the product. Keep uploaded files small (roughly under 500KB
+                  each) — they're stored directly in the browser, and large
+                  images can fill it up quickly.
+                </p>
+
+                <div
+                  id="extraImagePreviewList"
+                  class="image-preview-extra"></div>
               </div>
-
-              <p class="field-hint">
-                The first image added becomes the main photo shown in the shop.
-                Add more to build a gallery. Keep uploaded files small (roughly
-                under 500KB each) — they're stored directly in the browser, and
-                large images can fill it up quickly.
-              </p>
-
-              <div id="imagePreviewList" class="image-preview-list"></div>
             </div>
 
             <div class="admin-field">

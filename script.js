@@ -1178,21 +1178,48 @@ function deleteProduct(productId) {
 // ADMIN PRODUCT IMAGE BUILDER
 // ==========================================
 
-let pendingProductImages = [];
+let pendingMainImage = null;
 
-function renderImagePreviewList() {
-  const container = document.getElementById("imagePreviewList");
+let pendingExtraImages = [];
+
+function renderMainImagePreview() {
+  const container = document.getElementById("mainImagePreview");
 
   if (!container) {
     return;
   }
 
-  container.innerHTML = pendingProductImages
+  if (!pendingMainImage) {
+    container.innerHTML = "";
+
+    return;
+  }
+
+  container.innerHTML = `
+        <div class="image-preview-main">
+            <img src="${escapeHTML(pendingMainImage)}" alt="Main product preview" />
+            <span class="image-preview-main-tag">Main Photo</span>
+            <button
+                type="button"
+                class="image-preview-remove"
+                aria-label="Remove main photo"
+            >×</button>
+        </div>
+    `;
+}
+
+function renderExtraImagePreview() {
+  const container = document.getElementById("extraImagePreviewList");
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = pendingExtraImages
     .map(
       (image, index) => `
                 <div class="image-preview-item">
-                    <img src="${escapeHTML(image)}" alt="Product preview ${index + 1}" />
-                    ${index === 0 ? '<span class="image-preview-main-tag">Main</span>' : ""}
+                    <img src="${escapeHTML(image)}" alt="Product preview ${index + 2}" />
                     <button
                         type="button"
                         class="image-preview-remove"
@@ -1206,60 +1233,128 @@ function renderImagePreviewList() {
 }
 
 function setupAdminImageInputs() {
-  const urlInput = document.getElementById("productImageUrl");
+  const mainUrlInput = document.getElementById("mainImageUrl");
 
-  const addUrlButton = document.getElementById("addImageUrlButton");
+  const addMainUrlButton = document.getElementById("addMainImageUrlButton");
 
-  const fileInput = document.getElementById("productImageFiles");
+  const mainFileInput = document.getElementById("mainImageFile");
 
-  const previewList = document.getElementById("imagePreviewList");
+  const mainPreview = document.getElementById("mainImagePreview");
 
-  if (addUrlButton && urlInput) {
-    addUrlButton.addEventListener("click", function () {
-      const url = urlInput.value.trim();
+  if (addMainUrlButton && mainUrlInput) {
+    addMainUrlButton.addEventListener("click", function () {
+      const url = mainUrlInput.value.trim();
 
       if (!url) {
         return;
       }
 
-      pendingProductImages.push(url);
+      pendingMainImage = url;
 
-      urlInput.value = "";
+      mainUrlInput.value = "";
 
-      renderImagePreviewList();
+      renderMainImagePreview();
     });
 
-    urlInput.addEventListener("keydown", function (event) {
+    mainUrlInput.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         event.preventDefault();
 
-        addUrlButton.click();
+        addMainUrlButton.click();
       }
     });
   }
 
-  if (fileInput) {
-    fileInput.addEventListener("change", function () {
-      const files = Array.from(fileInput.files || []);
+  if (mainFileInput) {
+    mainFileInput.addEventListener("change", function () {
+      const file = mainFileInput.files && mainFileInput.files[0];
+
+      if (!file) {
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        pendingMainImage = event.target.result;
+
+        renderMainImagePreview();
+      };
+
+      reader.readAsDataURL(file);
+
+      mainFileInput.value = "";
+    });
+  }
+
+  if (mainPreview) {
+    mainPreview.addEventListener("click", function (event) {
+      const removeButton = event.target.closest(".image-preview-remove");
+
+      if (!removeButton) {
+        return;
+      }
+
+      pendingMainImage = null;
+
+      renderMainImagePreview();
+    });
+  }
+
+  const extraUrlInput = document.getElementById("extraImageUrl");
+
+  const addExtraUrlButton = document.getElementById("addExtraImageUrlButton");
+
+  const extraFileInput = document.getElementById("extraImageFiles");
+
+  const extraPreviewList = document.getElementById("extraImagePreviewList");
+
+  if (addExtraUrlButton && extraUrlInput) {
+    addExtraUrlButton.addEventListener("click", function () {
+      const url = extraUrlInput.value.trim();
+
+      if (!url) {
+        return;
+      }
+
+      pendingExtraImages.push(url);
+
+      extraUrlInput.value = "";
+
+      renderExtraImagePreview();
+    });
+
+    extraUrlInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+
+        addExtraUrlButton.click();
+      }
+    });
+  }
+
+  if (extraFileInput) {
+    extraFileInput.addEventListener("change", function () {
+      const files = Array.from(extraFileInput.files || []);
 
       files.forEach(function (file) {
         const reader = new FileReader();
 
         reader.onload = function (event) {
-          pendingProductImages.push(event.target.result);
+          pendingExtraImages.push(event.target.result);
 
-          renderImagePreviewList();
+          renderExtraImagePreview();
         };
 
         reader.readAsDataURL(file);
       });
 
-      fileInput.value = "";
+      extraFileInput.value = "";
     });
   }
 
-  if (previewList) {
-    previewList.addEventListener("click", function (event) {
+  if (extraPreviewList) {
+    extraPreviewList.addEventListener("click", function (event) {
       const removeButton = event.target.closest(".image-preview-remove");
 
       if (!removeButton) {
@@ -1268,9 +1363,9 @@ function setupAdminImageInputs() {
 
       const index = Number(removeButton.getAttribute("data-index"));
 
-      pendingProductImages.splice(index, 1);
+      pendingExtraImages.splice(index, 1);
 
-      renderImagePreviewList();
+      renderExtraImagePreview();
     });
   }
 }
@@ -1299,16 +1394,8 @@ function setupAdminForm() {
       .getElementById("productDescription")
       .value.trim();
 
-    if (
-      !name ||
-      !category ||
-      !price ||
-      pendingProductImages.length === 0 ||
-      !description
-    ) {
-      alert(
-        "Please complete all fields, including at least one product image.",
-      );
+    if (!name || !category || !price || !pendingMainImage || !description) {
+      alert("Please complete all fields, including a main product photo.");
 
       return;
     }
@@ -1324,9 +1411,9 @@ function setupAdminForm() {
 
       price: price,
 
-      image: pendingProductImages[0],
+      image: pendingMainImage,
 
-      images: [...pendingProductImages],
+      images: [pendingMainImage, ...pendingExtraImages],
 
       description: description,
     };
@@ -1337,9 +1424,13 @@ function setupAdminForm() {
 
     form.reset();
 
-    pendingProductImages = [];
+    pendingMainImage = null;
 
-    renderImagePreviewList();
+    pendingExtraImages = [];
+
+    renderMainImagePreview();
+
+    renderExtraImagePreview();
 
     renderAdminProducts();
 
