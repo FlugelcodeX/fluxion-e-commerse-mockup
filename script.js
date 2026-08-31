@@ -1480,7 +1480,8 @@ function sendMessengerInquiry() {
 
     */
 
-  const messengerPage = "https://m.me/fluxion";
+  const messengerPage =
+    "https://www.facebook.com/profile.php?id=61565052770927";
 
   window.open(messengerPage + "?text=" + message, "_blank");
 }
