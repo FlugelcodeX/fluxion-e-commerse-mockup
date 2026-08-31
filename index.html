@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FLUXION | Women's Fashion</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="customer-site">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <span>FLUXION</span>
+        <small>WOMEN'S COLLECTION</small>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <button class="bag-button" id="openBagButton">
+        <span>Bag</span>
+        <strong id="bagCount">0</strong>
+      </button>
+    </header>
+
+    <main>
+      <section class="home-hero">
+        <div class="hero-copy">
+          <p class="small-label">THE NEW COLLECTION</p>
+
+          <h1>
+            Elegance<br />
+            <em>in every detail.</em>
+          </h1>
+
+          <p class="hero-description">
+            Discover a carefully curated collection of women's clothing, bags,
+            necklaces and rings designed for timeless everyday elegance.
+          </p>
+
+          <a href="shop.html" class="primary-button"> Explore Collection </a>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1200&q=85"
+            alt="Women's fashion" />
+
+          <div class="hero-caption">
+            <span>FLUXION</span>
+            <small>COLLECTION 01 / 2026</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="home-categories">
+        <div class="section-introduction">
+          <div>
+            <p class="small-label">SHOP BY CATEGORY</p>
+            <h2>Find your<br /><em>signature.</em></h2>
+          </div>
+
+          <p>
+            From refined essentials to delicate accessories, discover pieces
+            made to complement your style.
+          </p>
+        </div>
+
+        <div class="category-showcase">
+          <a href="shop.html?category=Clothes" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=85"
+                alt="Women's clothes" />
+
+              <span class="category-number">01</span>
+            </div>
+
+            <div class="category-details">
+              <h3>Women's Clothes</h3>
+              <span>Explore clothing →</span>
+            </div>
+          </a>
+
+          <a href="shop.html?category=Bags" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85"
+                alt="Women's bags" />
+
+              <span class="category-number">02</span>
+            </div>
+
+            <div class="category-details">
+              <h3>Bags</h3>
+              <span>Explore bags →</span>
+            </div>
+          </a>
+
+          <a href="shop.html?category=Necklaces" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=85"
+                alt="Necklace" />
+
+              <span class="category-number">03</span>
+            </div>
+
+            <div class="category-details">
+              <h3>Necklaces</h3>
+              <span>Explore necklaces →</span>
+            </div>
+          </a>
+
+          <a href="shop.html?category=Rings" class="category-item">
+            <div class="category-image">
+              <img
+                src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=85"
+                alt="Rings" />
+
+              <span class="category-number">04</span>
+            </div>
+
+            <div class="category-details">
+              <h3>Rings</h3>
+              <span>Explore rings →</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="home-editorial">
+        <div class="editorial-photo">
+          <img
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85"
+            alt="FLUXION fashion" />
+        </div>
+
+        <div class="editorial-copy">
+          <p class="small-label">THE FLUXION WOMAN</p>
+
+          <h2>
+            Quiet luxury.<br />
+            <em>Personal style.</em>
+          </h2>
+
+          <p>
+            We believe elegance should feel effortless. Every piece is selected
+            to help you create a wardrobe that feels uniquely yours.
+          </p>
+
+          <a href="about.html" class="outline-button"> Discover Our Story </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <strong id="footerLogo">FLUXION</strong>
+        <p>Elegant pieces for every woman.</p>
+      </div>
+
+      <div class="footer-navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="footer-bottom">© 2026 FLUXION. Showcase Mockup.</div>
+    </footer>
+
+    <div class="bag-overlay" id="bagOverlay">
+      <div class="bag-panel">
+        <button class="close-bag" id="closeBagButton">×</button>
+
+        <p class="small-label">YOUR SELECTION</p>
+
+        <h2>Your Bag</h2>
+
+        <div id="bagItems"></div>
+
+        <div class="bag-summary">
+          <div>
+            <span>Estimated Total</span>
+            <strong id="bagTotal">₱0</strong>
+          </div>
+
+          <button class="primary-button messenger-button" id="messengerButton">
+            Inquire via Messenger
+          </button>
+        </div>
+
+        <p class="bag-disclaimer">
+          This showcase does not process online payments. Product inquiries are
+          handled through Messenger.
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | FLUXION</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="customer-site">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <span>FLUXION</span>
+        <small>WOMEN'S COLLECTION</small>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html" class="active">About</a>
+      </nav>
+
+      <button class="bag-button" id="openBagButton">
+        <span>Bag</span>
+        <strong id="bagCount">0</strong>
+      </button>
+    </header>
+
+    <main>
+      <section class="about-hero">
+        <div class="about-hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
+            alt="Woman in elegant fashion" />
+        </div>
+
+        <div class="about-hero-copy">
+          <p class="small-label">ABOUT FLUXION</p>
+
+          <h1>
+            Beauty in<br />
+            <em>the details.</em>
+          </h1>
+
+          <p>
+            FLUXION is a women's fashion showcase built around one idea:
+            elegance doesn't need to be complicated. Every piece is chosen to
+            feel effortless, refined, and personal.
+          </p>
+        </div>
+      </section>
+
+      <section class="story-section">
+        <div class="story-copy">
+          <p class="small-label">OUR STORY</p>
+
+          <h2>
+            Designed for<br />
+            modern women.
+          </h2>
+
+          <p>
+            We believe clothing and accessories should feel natural, refined,
+            and personal. From carefully selected women's clothing to elegant
+            bags, necklaces, and rings, FLUXION focuses on pieces that can
+            become part of your everyday style.
+          </p>
+        </div>
+
+        <div class="story-image">
+          <img
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85"
+            alt="FLUXION styling detail" />
+        </div>
+      </section>
+
+      <section class="values-section">
+        <div class="values-heading">
+          <p class="small-label">WHAT WE VALUE</p>
+
+          <h2>
+            The ideas behind<br />
+            every piece.
+          </h2>
+        </div>
+
+        <div class="values-list">
+          <div class="value-item">
+            <span>01</span>
+            <div>
+              <h3>Elegance</h3>
+              <p>Timeless designs that remain beautiful beyond trends.</p>
+            </div>
+          </div>
+
+          <div class="value-item">
+            <span>02</span>
+            <div>
+              <h3>Quality</h3>
+              <p>Pieces selected with attention to detail and presentation.</p>
+            </div>
+          </div>
+
+          <div class="value-item">
+            <span>03</span>
+            <div>
+              <h3>Individuality</h3>
+              <p>Fashion should complement your identity, not define it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-ending">
+        <p class="small-label">FIND YOUR STYLE</p>
+
+        <h2>
+          Your next favorite<br />
+          piece is waiting.
+        </h2>
+
+        <a href="shop.html" class="primary-button">Browse Collection</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <strong id="footerLogo">FLUXION</strong>
+        <p>Elegant pieces for every woman.</p>
+      </div>
+
+      <div class="footer-navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="footer-bottom">© 2026 FLUXION. Showcase Mockup.</div>
+    </footer>
+
+    <div class="bag-overlay" id="bagOverlay">
+      <div class="bag-panel">
+        <button class="close-bag" id="closeBagButton">×</button>
+
+        <p class="small-label">YOUR SELECTION</p>
+
+        <h2>Your Bag</h2>
+
+        <div id="bagItems"></div>
+
+        <div class="bag-summary">
+          <div>
+            <span>Estimated Total</span>
+            <strong id="bagTotal">₱0</strong>
+          </div>
+
+          <button class="primary-button messenger-button" id="messengerButton">
+            Inquire via Messenger
+          </button>
+        </div>
+
+        <p class="bag-disclaimer">
+          This showcase does not process online payments. Product inquiries are
+          handled through Messenger.
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

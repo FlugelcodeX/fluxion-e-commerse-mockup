@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | FLUXION</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="customer-site">
+    <header class="site-header">
+      <a href="index.html" class="brand">
+        <span>FLUXION</span>
+        <small>WOMEN'S COLLECTION</small>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="about.html">About</a>
+      </nav>
+
+      <button class="bag-button" id="openBagButton">
+        <span>Bag</span>
+        <strong id="bagCount">0</strong>
+      </button>
+    </header>
+
+    <main>
+      <section class="shop-heading">
+        <p class="small-label">THE COLLECTION</p>
+
+        <h1>Shop <em>FLUXION.</em></h1>
+
+        <p>Carefully selected pieces for a refined and effortless wardrobe.</p>
+      </section>
+
+      <section class="shop-container">
+        <div class="shop-controls">
+          <div class="result-count">
+            <span id="productCount">0 products</span>
+          </div>
+
+          <div class="shop-filters">
+            <div class="filter-box">
+              <label for="categoryFilter"> Category </label>
+
+              <select id="categoryFilter">
+                <option value="All">All Products</option>
+
+                <option value="Clothes">Women's Clothes</option>
+
+                <option value="Bags">Bags</option>
+
+                <option value="Necklaces">Necklaces</option>
+
+                <option value="Rings">Rings</option>
+              </select>
+            </div>
+
+            <div class="filter-box">
+              <label for="priceFilter"> Sort by </label>
+
+              <select id="priceFilter">
+                <option value="default">Featured</option>
+
+                <option value="low">Price: Low to High</option>
+
+                <option value="high">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="shop-grid" id="productGrid"></div>
+
+        <nav class="shop-pagination" id="shopPagination"></nav>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <strong id="footerLogo">FLUXION</strong>
+        <p>Elegant pieces for every woman.</p>
+      </div>
+
+      <div class="footer-navigation">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+      </div>
+
+      <div class="footer-bottom">© 2026 FLUXION. Showcase Mockup.</div>
+    </footer>
+
+    <div class="bag-overlay" id="bagOverlay">
+      <div class="bag-panel">
+        <button class="close-bag" id="closeBagButton">×</button>
+
+        <p class="small-label">YOUR SELECTION</p>
+
+        <h2>Your Bag</h2>
+
+        <div id="bagItems"></div>
+
+        <div class="bag-summary">
+          <div>
+            <span>Estimated Total</span>
+            <strong id="bagTotal">₱0</strong>
+          </div>
+
+          <button class="primary-button messenger-button" id="messengerButton">
+            Inquire via Messenger
+          </button>
+        </div>
+
+        <p class="bag-disclaimer">
+          This showcase does not process online payments. Product inquiries are
+          handled through Messenger.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-modal-overlay" id="productModalOverlay">
+      <div class="product-modal-panel">
+        <button class="close-bag" id="closeProductModal">×</button>
+
+        <div class="product-modal-gallery">
+          <div class="product-modal-main-image">
+            <img id="productModalMainImage" src="" alt="" />
+          </div>
+        </div>
+
+        <div class="product-modal-details">
+          <span class="product-category" id="productModalCategory"></span>
+
+          <h2 id="productModalName"></h2>
+
+          <div class="product-price" id="productModalPrice"></div>
+
+          <p class="product-modal-description" id="productModalDescription"></p>
+
+          <button class="add-to-bag" id="productModalAddButton">
+            Add to Bag
+          </button>
+
+          <div class="modal-thumbs" id="productModalThumbs"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

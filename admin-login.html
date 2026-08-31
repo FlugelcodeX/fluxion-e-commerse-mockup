@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login | FLUXION</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+
+  <body class="admin-site">
+    <main class="login-main">
+      <div class="login-card">
+        <a href="index.html" class="admin-brand login-brand">
+          FLUXION
+          <span>ADMIN</span>
+        </a>
+
+        <p class="login-subtitle">Sign in to manage the FLUXION store.</p>
+
+        <form id="adminLoginForm" novalidate>
+          <div class="admin-field">
+            <label for="adminPassword">Password</label>
+            <input
+              type="password"
+              id="adminPassword"
+              placeholder="Enter admin password"
+              autocomplete="current-password"
+              required />
+          </div>
+
+          <p id="loginError" class="login-error" role="alert"></p>
+
+          <button type="submit" class="admin-submit login-submit">
+            Sign In
+          </button>
+        </form>
+
+        <a href="index.html" class="login-back">← Back to store</a>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
